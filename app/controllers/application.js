@@ -3,7 +3,6 @@ export default Ember.Controller.extend({
     actions: {
         addNote() {
             let notes = this.get('model.notes');
-            this.set('model.singleNote', notes.content.length == 0);
 
             this.get('store').push({
                 data: [{
@@ -20,7 +19,7 @@ export default Ember.Controller.extend({
         },
 
         showNote(note) {
-            note.set('selected', true);
+            this.get('model.notes').map(note => note.set('selected', false));
             this.set('model.selectedNote', note);
         },
 
@@ -29,20 +28,6 @@ export default Ember.Controller.extend({
                 this.get('model.notes').map(note => note.set('edit', false));
             }
             this.toggleProperty('model.editMode');
-        },
-
-        rowSelected() {
-            if(this.get('model.editMode')) {
-                var selectedNotes = 0;
-
-                this.get('model.notes').forEach(note => {
-                    if(note.get('edit')) {
-                        selectedNotes++;
-                    }
-                });
-
-                this.set('model.numSelected', selectedNotes);
-            }
         }
     }
 });

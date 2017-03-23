@@ -2,16 +2,18 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     classNames: ['note_row'],
+    classNameBindings: ['selected'],
     note: null,
     editMode: false,
-    selected: null,
+    selected: Ember.computed.alias('note.selected'),
 
     actions: {
         select() {
             this.get('selectNote')(this.get('note'));
-            this.get('selected')();
+            this.set('selected', true);
         },
         selectEdit() {
+            console.log('editting')
             this.toggleProperty('note.edit');
         }
     }

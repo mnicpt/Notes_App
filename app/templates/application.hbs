@@ -16,14 +16,14 @@
         <div class="notes">
             {{#each model.notes as |note|}}
                 {{#link-to 'note' note.id}}
-                    {{note-row note=note editMode=model.editMode selected=(action 'rowSelected') selectNote=(action 'showNote')}}
+                    {{note-row note=note editMode=model.editMode selectNote=(action 'showNote')}}
                 {{/link-to}}
             {{/each}}
         </div>
         <div class="toolbar">
             <div class="container">&nbsp;</div>
             <div class="notes_count container">
-                {{model.notes.length}}{{if model.singleNote "note" "notes"}}
+                {{model.notes.length}} {{if model.singleNote "note" "notes"}}
             </div>
             {{#if model.editMode}}
                 <div class="delete_button container btn">{{fa-icon "trash-o"}}</div>

@@ -3,14 +3,17 @@ import Ember from 'ember';
 export default Ember.Route.extend({
     model() {
         var notes = this.get('store').peekAll('note');
-        var singleNote = notes.length == 1;
 
         return {
             notes: notes,
-            singleNote: singleNote,
+            singleNote: Ember.computed('notes.length', () =>
+                notes.get('length') === 1
+            ),
             selectedNote: null,
             editMode: false,
-            numSelected: 0
+            numSelected: Ember.computed('notes.@each.edit', () =>
+                notes.filterBy('edit', true).get('length')
+            )
         };
     }
 });
