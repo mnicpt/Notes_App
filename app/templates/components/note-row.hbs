@@ -1,0 +1,15 @@
+<div class="note_wrapper" {{action 'select'}}> 
+    {{#if editMode}}      
+        <div class="edit" {{action 'selectEdit'}}>
+            {{#if note.edit}}
+                <div>{{fa-icon "check-circle"}}</div>
+            {{else}}
+                <div>{{fa-icon "circle-thin"}}</div>
+            {{/if}}
+        </div>
+    {{/if}}
+    <div class="content">        
+        <div class="title">{{note.title}}</div>        
+        <div class="subtitle">{{note.date}}</div>     
+    </div>
+</div>
