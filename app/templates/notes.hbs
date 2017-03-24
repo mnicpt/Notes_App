@@ -14,22 +14,7 @@
 
 <div class="notes">
     {{#each model.folders as |folder|}}
-        <div class="note_row">
-            <div class="note_wrapper" {{action 'select' folder}}> 
-                {{#if model.editMode}}      
-                    <div class="edit" {{action 'edit' folder}}>
-                        {{#if folder.edit}}
-                            <div>{{fa-icon "check-circle"}}</div>
-                        {{else}}
-                            <div>{{fa-icon "circle-thin"}}</div>
-                        {{/if}}
-                    </div>
-                {{/if}}
-                <div class="content">        
-                    <div class="title">{{folder.title}}</div>        
-                </div>
-            </div>
-        </div>
+        {{note-row model=folder editMode=model.editMode selectRow=(action 'select')}}
     {{/each}}
 </div>
 

@@ -1,1 +1,33 @@
-{{outlet}}
+<div class="master_header">
+    <div class="container back" {{action 'back'}}>
+        {{fa-icon 'chevron-left'}} Folders
+    </div>
+    <div class="master_title container">
+        {{#if model.editMode}}
+            {{model.numSelected}} selected
+        {{else}}
+            {{model.folder}}
+        {{/if}}
+    </div>
+    <div class="edit_button container btn" {{action 'toggleEdit'}}>
+        {{if model.editMode "Cancel" "Edit"}}
+    </div>
+</div>
+
+<div class="notes">
+    {{#each model.notes as |note|}}
+       {{note-row model=note editMode=model.editMode selectRow=(action 'select')}}
+    {{/each}}
+</div>
+
+<div class="toolbar">
+    <div class="container">&nbsp;</div>
+    <div class="notes_count container">
+        {{model.notes.length}} {{if model.singleNote "note" "notes"}}
+    </div>
+    {{#if model.editMode}}
+        <div class="delete_button container btn">{{fa-icon "trash-o"}}</div>
+    {{else}}
+        <div class="add_button container btn" {{action 'addNote'}}>{{fa-icon "plus-square-o"}}</div>
+    {{/if}}
+</div>

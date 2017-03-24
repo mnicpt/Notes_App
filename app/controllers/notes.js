@@ -17,6 +17,9 @@ export default Ember.Controller.extend({
             })
         },
         select(folder) {
+            this.get('model.folders').map(folder => folder.set('selected', false));
+            folder.set('selected', true);
+            
             if(!this.get('model.editMode')) {
                 this.transitionToRoute('notes-folder', folder.get('id'));
             }
