@@ -1,0 +1,46 @@
+<div class="master_header">
+    <div class="container">&nbsp;</div>
+    <div class="master_title container">
+        {{#if model.editMode}}
+            {{model.numSelected}} selected
+        {{else}}
+            Folders
+        {{/if}}
+    </div>
+    <div class="edit_button container btn" {{action 'toggleEdit'}}>
+        {{if model.editMode "Cancel" "Edit"}}
+    </div>
+</div>
+
+<div class="notes">
+    {{#each model.folders as |folder|}}
+        <div class="note_row">
+            <div class="note_wrapper" {{action 'select' folder}}> 
+                {{#if model.editMode}}      
+                    <div class="edit" {{action 'edit' folder}}>
+                        {{#if folder.edit}}
+                            <div>{{fa-icon "check-circle"}}</div>
+                        {{else}}
+                            <div>{{fa-icon "circle-thin"}}</div>
+                        {{/if}}
+                    </div>
+                {{/if}}
+                <div class="content">        
+                    <div class="title">{{folder.title}}</div>        
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div class="toolbar">
+    <div class="container">&nbsp;</div>
+    <div class="notes_count container">
+        {{model.notes.length}} {{if model.singleNote "note" "notes"}}
+    </div>
+    {{#if model.editMode}}
+        <div class="delete_button container btn">{{fa-icon "trash-o"}}</div>
+    {{else}}
+        <div class="add_button container btn" {{action 'addFolder'}}>{{fa-icon "plus-square-o"}}</div>
+    {{/if}}
+</div>

@@ -1,36 +1,6 @@
 <div class="wrapper">
     <div class="master container">
-        <div class="master_header">
-            <div class="container">&nbsp;</div>
-            <div class="master_title container">
-                {{#if model.editMode}}
-                    {{model.numSelected}} selected
-                {{else}}
-                    Notes
-                {{/if}}
-            </div>
-            <div class="edit_button container btn" {{action 'toggleEdit'}}>
-                {{if model.editMode "Cancel" "Edit"}}
-            </div>
-        </div>
-        <div class="notes">
-            {{#each model.notes as |note|}}
-                {{#link-to 'note' note.id}}
-                    {{note-row note=note editMode=model.editMode selectNote=(action 'showNote')}}
-                {{/link-to}}
-            {{/each}}
-        </div>
-        <div class="toolbar">
-            <div class="container">&nbsp;</div>
-            <div class="notes_count container">
-                {{model.notes.length}} {{if model.singleNote "note" "notes"}}
-            </div>
-            {{#if model.editMode}}
-                <div class="delete_button container btn">{{fa-icon "trash-o"}}</div>
-            {{else}}
-                <div class="add_button container btn" {{action 'addNote'}}>{{fa-icon "plus-square-o"}}</div>
-            {{/if}}
-        </div>
+        {{outlet}}
     </div>
     <div class="detail container">
         <div class="detail_header">
@@ -44,7 +14,7 @@
                     +<br/>Note
                 </div>
             {{/unless}}
-            {{outlet}}
+            {{outlet detail}}
         </div>
     </div>
 </div>

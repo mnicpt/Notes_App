@@ -12,8 +12,7 @@ export default Ember.Component.extend({
             this.get('selectNote')(this.get('note'));
             this.set('selected', true);
         },
-        selectEdit() {
-            console.log('editting')
+        edit() {
             this.toggleProperty('note.edit');
         }
     }
