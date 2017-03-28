@@ -1,16 +1,6 @@
-<div class="master_header">
-    <div class="container">&nbsp;</div>
-    <div class="master_title container">
-        {{#if model.editMode}}
-            {{model.numSelected}} selected
-        {{else}}
-            Folders
-        {{/if}}
-    </div>
-    <div class="edit_button container btn" {{action 'toggleEdit'}}>
-        {{if model.editMode "Cancel" "Edit"}}
-    </div>
-</div>
+{{master-header backButton=false editMode=model.editMode title='Folders'
+                numSelected=model.numSelected
+                edit=(action 'toggleEdit')}}
 
 <div class="notes">
     {{#each model.folders as |folder|}}
@@ -18,14 +8,4 @@
     {{/each}}
 </div>
 
-<div class="toolbar">
-    <div class="container">&nbsp;</div>
-    <div class="notes_count container">
-        {{model.notes.length}} {{if model.singleNote "note" "notes"}}
-    </div>
-    {{#if model.editMode}}
-        <div class="delete_button container btn">{{fa-icon "trash-o"}}</div>
-    {{else}}
-        <div class="add_button container btn" {{action 'addFolder'}}>{{fa-icon "plus-square-o"}}</div>
-    {{/if}}
-</div>
+{{master-toolbar notes=model.notes editMode=model.editMode add=(action 'addFolder') delete=(action 'deleteFolders')}}

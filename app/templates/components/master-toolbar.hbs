@@ -1,0 +1,9 @@
+<div class="container">&nbsp;</div>
+<div class="notes_count container">
+    {{notes.length}} {{if singleNote "note" "notes"}}
+</div>
+{{#if editMode}}
+    <div class="delete_button container btn" {{action 'delete'}}>{{fa-icon "trash-o"}}</div>
+{{else}}
+    <div class="add_button container btn" {{action 'add'}}>{{fa-icon "plus-square-o"}}</div>
+{{/if}}

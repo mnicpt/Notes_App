@@ -32,6 +32,18 @@ export default Ember.Controller.extend({
             }
         },
 
+        deleteNotes() {
+            let store = this.get('store');
+            
+            let notes = this.get('model.notes').forEach((current_note) => {
+                if(current_note.get('edit')) {
+                    store.unloadRecord(current_note);
+                }
+            });
+
+            this.set('model.editMode', false);
+        },
+
         select(note) {
             this.resetModelPropertyValue('model.notes', 'selected', false);
             

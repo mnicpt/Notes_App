@@ -1,0 +1,13 @@
+<div class="container {{backBtnClass}}" {{action 'back'}}>
+    {{#if backButton}}
+        {{fa-icon 'chevron-left'}} Folders
+    {{else}}
+        &nbsp;
+    {{/if}}
+</div>
+<div class="master_title container">
+    {{#if editMode}} {{numSelected}} selected {{else}} {{title}} {{/if}}
+</div>
+<div class="edit_button container btn" {{action 'edit'}}>
+    {{if editMode "Cancel" "Edit"}}
+</div>
