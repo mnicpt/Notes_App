@@ -3,18 +3,16 @@
         {{outlet}}
     </div>
     <div class="detail container">
-        <div class="detail_header">
-            {{#if model.selectedNote}}
-                {{input type="text" value=model.selectedNote.title}}
-            {{/if}}
-        </div>
-        <div class="detail_content">
-            {{#unless model.selectedNote}}
+        {{#if model.selectedNote}}
+            {{outlet 'detail'}}
+        {{else}}
+            <div class="detail_header">
+            </div>
+            <div class="detail_content">
                 <div class="default_note">
                     +<br/>Note
                 </div>
-            {{/unless}}
-            {{outlet detail}}
-        </div>
+            </div>
+        {{/if}} 
     </div>
 </div>
